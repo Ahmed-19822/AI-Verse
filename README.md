@@ -81,7 +81,7 @@ aiverse/
    - `anon public` key → `frontend/.env` as `VITE_SUPABASE_ANON_KEY` (safe to expose, RLS protects the data)
    - `service_role` key → `backend/.env` as `SUPABASE_SERVICE_ROLE_KEY` (⚠️ **backend only** — this key bypasses RLS entirely; if it leaks, your whole database is exposed)
 4. **Authentication → Providers**: enable Email, and turn on "Confirm email" if you want email verification (the spec asks for it)
-5. **Authentication → URL Configuration**: set **Site URL** to your deployed frontend (e.g. `https://ai-verse-green.vercel.app`) and add the same origin under **Redirect URLs** (plus `http://localhost:5173` for local dev)
+5. **Authentication → URL Configuration**: set **Site URL** to your deployed frontend (e.g. `https://ai-verse-three-rust.vercel.app`) and add the same origin under **Redirect URLs** (plus `http://localhost:5173` for local dev)
 6. **Storage**: create a bucket called `media` for avatars/status/chat files; set it to public read if you want simple `<img>` rendering, or keep it private and sign URLs from the backend
 
 ### 2. Stripe
