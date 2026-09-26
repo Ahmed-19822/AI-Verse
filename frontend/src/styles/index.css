@@ -1,0 +1,143 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+@layer base {
+  :root {
+    --color-void: 10 1 24;
+    --color-void-deep: 5 1 16;
+    --color-surface: 18 12 36;
+    --color-violet: 124 92 255;
+    --color-violet-dim: 74 53 150;
+    --color-violet-bright: 167 139 255;
+    --color-cyan: 0 240 216;
+    --color-cyan-dim: 10 138 126;
+    --color-magenta: 255 60 172;
+    --color-ink: 236 233 255;
+    --color-mute: 139 133 184;
+    --color-line: rgba(124,92,255,0.18);
+    --color-glow-1: rgba(124,92,255,0.16);
+    --color-glow-2: rgba(0,240,216,0.10);
+  }
+
+  /* Define Light Theme */
+  :root.theme-light {
+    --color-void: 248 249 250;
+    --color-void-deep: 255 255 255;
+    --color-surface: 255 255 255;
+    --color-violet: 108 71 255;
+    --color-violet-dim: 167 139 255;
+    --color-violet-bright: 74 53 150;
+    --color-cyan: 0 163 145;
+    --color-cyan-dim: 0 240 216;
+    --color-magenta: 224 26 138;
+    --color-ink: 17 24 39;
+    --color-mute: 107 114 128;
+    --color-line: rgba(108,71,255,0.15);
+    --color-glow-1: rgba(108,71,255,0.12);
+    --color-glow-2: rgba(0,163,145,0.08);
+  }
+
+  /* Define Premium Cyberpunk Theme */
+  :root.theme-cyberpunk {
+    --color-void: 9 0 20;
+    --color-void-deep: 0 0 0;
+    --color-surface: 10 0 20;
+    --color-violet: 255 0 230;
+    --color-violet-dim: 138 0 124;
+    --color-violet-bright: 255 102 238;
+    --color-cyan: 0 255 255;
+    --color-cyan-dim: 0 139 139;
+    --color-magenta: 255 0 255;
+    --color-ink: 255 255 255;
+    --color-mute: 160 158 184;
+    --color-line: rgba(255,0,230,0.25);
+    --color-glow-1: rgba(255,0,230,0.18);
+    --color-glow-2: rgba(0,255,255,0.12);
+  }
+
+  /* Define Pro Sunset Theme */
+  :root.theme-sunset {
+    --color-void: 31 13 21;
+    --color-void-deep: 18 5 10;
+    --color-surface: 0 15 10;
+    --color-violet: 255 94 58;
+    --color-violet-dim: 166 48 22;
+    --color-violet-bright: 255 164 138;
+    --color-cyan: 255 192 0;
+    --color-cyan-dim: 166 125 0;
+    --color-magenta: 255 26 90;
+    --color-ink: 255 240 230;
+    --color-mute: 184 150 148;
+    --color-line: rgba(255,94,58,0.2);
+    --color-glow-1: rgba(255,94,58,0.16);
+    --color-glow-2: rgba(255,192,0,0.10);
+  }
+
+  /* Define Pro Emerald Theme */
+  :root.theme-emerald {
+    --color-void: 6 26 18;
+    --color-void-deep: 2 10 7;
+    --color-surface: rgba(10,30,20,0.6);
+    --color-violet: 0 230 118;
+    --color-violet-dim: 0 138 71;
+    --color-violet-bright: 105 255 180;
+    --color-cyan: 100 255 218;
+    --color-cyan-dim: 50 168 141;
+    --color-magenta: 174 234 0;
+    --color-ink: 230 255 242;
+    --color-mute: 133 184 161;
+    --color-line: rgba(0,230,118,0.2);
+    --color-glow-1: rgba(0,230,118,0.15);
+    --color-glow-2: rgba(100,255,218,0.10);
+  }
+
+  body {
+    @apply bg-void text-ink font-body antialiased transition-colors duration-500;
+    background-image:
+      radial-gradient(circle at 20% 0%, var(--color-glow-1), transparent 45%),
+      radial-gradient(circle at 90% 20%, var(--color-glow-2), transparent 40%),
+      linear-gradient(180deg, var(--color-void) 0%, var(--color-void-deep) 100%);
+    background-attachment: fixed;
+  }
+  ::selection { background: var(--color-violet); color: #fff; opacity: 0.4; }
+  :focus-visible { outline: 2px solid var(--color-cyan); outline-offset: 2px; }
+}
+
+@layer components {
+  .glass {
+    @apply bg-surface backdrop-blur-xl border border-line;
+  }
+  .glass-card {
+    @apply glass rounded-2xl;
+  }
+  .btn-primary {
+    @apply px-6 py-3 rounded-xl bg-violet text-white font-medium tracking-wide
+           shadow-[0_0_24px_rgba(124,92,255,0.45)] hover:shadow-[0_0_36px_rgba(124,92,255,0.7)]
+           hover:bg-violet-bright transition-all duration-300;
+  }
+  .btn-ghost {
+    @apply px-6 py-3 rounded-xl glass text-ink hover:border-cyan/50 hover:text-cyan transition-all duration-300;
+  }
+  .label-eyebrow {
+    @apply font-mono text-xs tracking-[0.25em] uppercase text-cyan/80;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
